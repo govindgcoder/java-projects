@@ -1,4 +1,5 @@
 import java.util.*;
+import java.lang.Math;
 
 class Student {
     private int id;
@@ -26,6 +27,20 @@ class Student {
     public String getColor(){return this.color;}
 }
 
+class PerfArea {
+    public static double area(double radius){
+        return Math.PI*radius*radius;
+    }
+    public static int area(int l, int b){
+        return l*b;
+    }
+
+    public static int[][] matmmul(int a[][], int b[][]){
+        int res = new int[3][3];
+
+    }
+}
+
 public class Uni {
     public static void main(String args[]){
         Student student = new Student();
@@ -39,6 +54,31 @@ public class Uni {
             n++;
         }
         val = (int) val/n;
-        student.inputValue(val, "student-1");
+        student.inputValue(val, "student-1aa");
+
+        String[] colors = {"Red","Green","Blue","Yellow","Purple"};
+
+        Random rand = new Random();
+
+        student.inputColor(colors[rand.nextInt(5)]);
+        String name = student.getName();
+        int count = 0;
+
+        for (int i=0;i<name.length();i++){
+            if(name.charAt(i)=='a'){
+                count++;
+            }
+        }
+        System.out.println("Student has the letter a: "+count+" times");
+
+        System.out.println(PerfArea.area(5.0)+"  "+PerfArea.area(5,5));
+
+        int a[][] = new int[3][3];
+        int b[][] = new int[3][3];
+        Arrays.fill(a[0],1);
+        Arrays.fill(b[0],1);
+        int res = PerfArea.matmmul(a,b);
+
+        System.out.println(res);
     }
 }
