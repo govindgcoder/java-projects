@@ -36,7 +36,19 @@ class PerfArea {
     }
 
     public static int[][] matmmul(int a[][], int b[][]){
-        int res = new int[3][3];
+        int[][] res = new int[3][3];
+
+        for(int i=0;i<3;i++){
+        	for(int j=0;j<3;j++){
+        		int sum=0;
+        		for(int k=0;k<3;k++){
+        			sum+=a[i][k]*b[k][j];
+        		}
+        		res[i][j]=sum;
+        	}
+        }
+
+        return res;
 
     }
 }
@@ -77,8 +89,12 @@ public class Uni {
         int b[][] = new int[3][3];
         Arrays.fill(a[0],1);
         Arrays.fill(b[0],1);
-        int res = PerfArea.matmmul(a,b);
+        Arrays.fill(a[1],2);
+        Arrays.fill(b[1],2);
+        int res[][] = PerfArea.matmmul(a,b);
 
-        System.out.println(res);
+        for(int i=0;i<3;i++){
+        	System.out.println(res[i][0]+" "+res[i][1]+" "+res[i][2]);
+        }
     }
 }
